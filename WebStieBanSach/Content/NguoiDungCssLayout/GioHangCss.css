@@ -1,0 +1,8 @@
+﻿#divGioHang{
+    border:1px solid #EEEEEE;
+    margin-left:10%
+}
+#divGioHang td{
+    padding:10px;
+    border:1px solid #EEEEEE;
+}

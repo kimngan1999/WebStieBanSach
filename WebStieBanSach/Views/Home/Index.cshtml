@@ -1,0 +1,81 @@
+﻿@using WebStieBanSach.Models;
+@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<Sach>
+
+<link href="~/Content/NguoiDungCssLayout/NguoiDungCssLayout.css" rel="stylesheet" />
+<link href="~/Content/TrangChuCss.css" rel="stylesheet" />
+@{
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+@section NoiDungBenPhai{
+    <div>
+        Làm thế nào để chọn lựa được những cuốn sách tốt, cần thiết nhất cho nhu cầu học tập và bồi dưỡng tâm hồn cho con em mình luôn là điều trăn trở của các bậc phụ huynh.
+        Để góp phần khắc phục thực trạng này, giúp phụ huynh và học sinh lựa chọn sách tham khảo một cách dễ dàng, hiệu quả, giúp cho mỗi học sinh có một tủ sách cá nhân tốt tại gia đình, 
+        Nhà xuất bản Giáo dục Việt Nam xây dựng "Tủ sách tham khảo của em". Bộ danh mục "Tủ sách tham khảo của em" của Nhà xuất bản Giáo dục Việt Nam được chia làm 5 cuốn, mỗi cuốn có 
+        Danh mục riêng dành cho từng lớp, từng môn học, bao gồm: Danh mục "Tủ sách tham khảo của em" dùng cho học sinh cấp Tiểu học; Danh mục "Tủ sách tham khảo của em" dùng cho 
+        học sinh cấp Trung học cơ sở; Danh mục "Tủ sách tham khảo của em" dùng cho học sinh lớp 10; Danh mục "Tủ sách tham khảo của em" dùng cho học sinh lớp 11;
+         Danh mục "Tủ sách tham khảo của em" dùng cho học sinh lớp 12.
+        Tủ sách cung cấp những cuốn sách tham khảo đã được chọn lọc với nội dung tốt, phù hợp cho việc học tập theo từng lớp học. Tủ sách cũng lựa chọn những cuốn sách 
+        giải trí lành mạnh cho các em ngoài giờ học, nhằm phát triển thẩm mĩ, nhận thức, tình cảm cho các em. Tủ sách thường xuyên được chọn lựa, bổ sung, cập nhật những
+         tựa sách mới. Các thành viên trong gia đình có thể cùng sử dụng cho việc học tập, giải trí, nâng cao kiến thức của mình.
+        Bộ sách "Tủ sách tham khảo của em" với lối trình bày khoa học, đẹp mắt, thông tin được sắp xếp theo hình thức bảng biểu với các phần tên sách,
+         tác giả, đơn giá rất rõ ràng khiến người tham khảo có thể tiếp nhận thông tin nhanh và chính xác nhất. Với kinh nghiệm trên 50 năm xuất bản sách giáo dục phục vụ giảng dạy, học tập cho các thế hệ học sinh và giáo viên Việt Nam, những cuốn sách này sẽ giúp cho học sinh và phụ huynh tạo lập một tủ sách tham khảo tại gia đình khoa học và giá trị.
+    </div>
+     }
+
+<h2 style="margin-left: 2%; font-weight:normal;color:black"> Sách mới sản xuất</h2>
+<hr/>
+@*div body trang inder*@
+<div id="divBody" style="background:white" >
+    @{ int i = 0;}
+    @foreach (var item in Model)
+    {
+        i++;
+        <div id="SanPham">
+            <a href="@Url.Action("XemChiTiet","Sach",new {@MaSach = item.MaSach })"><div id="AnhBia"><img src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="100" height="150" /> </div></a>
+            <div id="ThongTin">
+                @*neu ten sach dai hon 30 ki tu*@
+                @if(item.TenSach.Length <35)
+                {
+                    <div id="TenSach" title="@item.TenSach">@item.TenSach</div>
+                }
+                else
+                {
+                    <div id="TenSach" title="@item.TenSach">@item.TenSach.Substring(0,35) ...</div>
+                }
+               
+                 <div id="DonGia" style="color:orange"><font color="Green">Giá: </font>@string.Format("{0:0,000 VND}", @item.GiaBan)</div>
+                <div id="GioHang" style="text-align:center">
+                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = item.MaSach, @StrUrl = Request.Url.ToString() }))
+                {
+                        <input type="submit" style="cursor:pointer"  value="Mua hàng &#xf07a;" id="btnGioHang" class="btn btn-primary" />
+                    }
+                </div>
+            </div>
+  
+        </div>
+        if(i%3==0)
+        {
+            <div style="clear:both"></div>
+        }
+    }
+</div>
+<div style="clear:both"></div>
+<div style="margin-left:20px; ">
+    @*Tao link lien ket cac trang*@
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+
+</div>
+<style>
+.MenuTrang li{
+    display:inline;
+}
+.MenuTrang li:hover{
+    color:red;
+}
+</style>

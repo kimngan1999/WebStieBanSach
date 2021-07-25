@@ -1,0 +1,52 @@
+﻿@using WebStieBanSach.Models;
+@model List<GioHang>
+<link href="~/Content/TrangChuCss.css" rel="stylesheet" />
+<link href="~/Content/NguoiDungCssLayout/GioHangCss.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+<h2>Giỏ hàng của bạn</h2>
+<table id="divGioHang">
+    <tr>
+        <td>Mã sách</td>
+        <td>Tên sách</td>
+        <td>Ảnh bìa</td>
+        <td>Đơn giá</td>
+        <td>Số lượng</td>
+        <td>Thành tiền</td>
+
+    </tr>
+
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.iMaSach</td>
+            <td>@item.sTenSach</td>
+            <td><a href="@Url.Action("XemChiTiet","Sach", new {@MaSach=item.iMaSach })"><img src="@Url.Content("~/HinhAnhSP/"+item.sAnhBia)" width="50" height="60" /> </a></td>
+            <td>@string.Format("{0:0,0}", item.dDonGia) VND </td>
+            <td>@item.iSoLuong</td>
+            <td>@string.Format("{0:0,0}", item.ThanhTien) VND </td>
+        </tr>
+
+    }
+ 
+    <tr>
+        <td colspan="6" id="ChuSo">
+           Tổng tiền:  @Html.Action("GioHangTongTien", "GioHang")
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6" id="TenCot">
+            @using (Html.BeginForm("HoaDon", "GioHang"))
+            {
+                <input type="submit" value="Đặt hàng" />
+            }
+        </td>
+
+    </tr>
+</table>

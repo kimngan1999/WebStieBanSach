@@ -1,0 +1,185 @@
+﻿
+body {
+    background: #000 !important;
+}
+/*su dung do rong toan trang*/
+div#Taontrang{
+    position:relative;
+    font-family:'Segoe UI';
+}
+/*Tjiet ke link dang ly dang nhap*/
+.DangkyDangNhap{
+    float:right;
+    margin-top: -1%;
+}
+.DangkyDangNhap a:hover{
+   text-decoration:none;
+   color:green;
+}
+div.idDienThoai{
+    float:left;
+      margin-top: -1%;
+}
+/* css navigation menu*/
+
+#divDanhMuc{
+    height:30px;
+    background: #0094ff
+
+}
+.flash.success {
+     height:30px;
+    background: #0055bd;
+}
+.navMenu{
+    float:right;
+    margin-right:0%;
+}
+
+.navMenu li{
+    display:inline;
+    border-right:solid 1px rgba(0,0,0,0.1);
+    padding:20px;
+    padding-top:19px;
+    padding-bottom:22px;
+    -webkit-transition:all 0.5s ease-out;
+    -moz-transition:all 0.5s ease-out;
+    -ms-transition:all 0.5s ease-out;
+    -o-transition:all 0.5s ease-out;
+}
+
+.navMenu li:hover {
+    background-color:rgba(0,0,0,0.5);
+    -webkit-transition:all 0.5s ease-out;
+    -moz-transition:all 0.5s ease-out;
+    -ms-transition:all 0.5s ease-out;
+    -o-transition:all 0.5s ease-out;
+}
+
+.navMenu a:hover{
+    text-decoration:none;
+}
+/*cssThay đổi mau hover cham*/
+.navMenu li:hover{
+    background-color:rgba(0,0,0,0.2);
+    -webkit-transition:all .5s ease-out;
+}
+.navMenu a:hover{
+  text-decoration:none;
+}
+/*
+    css tim kiem
+*/
+#txtTimKiem{
+    float: left;
+    margin-left:5%;
+}
+
+#txtTimKiem input{
+    height:0;
+
+}
+/*css image button hinh anh*/
+#divHinhAnhTimKiem button{
+    margin-right:-65px;
+    padding:0 10px 5px 10px;
+    background-color:#0055bd;
+}
+#divHinhAnhTimKiem button:hover{
+    background-color:#808080;
+}
+#divHinhAnhTimKiem img{
+    width:30px;
+    height:30px;
+
+}
+/*css slider*/
+#slider{
+    float:right;
+    width:900px;
+    height:360px;
+}
+#divMenuLeft
+{
+    float:left;
+}
+#slider img{
+    width:900px;
+    height: 360px;
+}
+/*css content*/
+#divLeft{
+    float:left;
+   width:30%;
+}
+#divLeft .item{
+    width:100%;
+}
+
+}
+ #divRight{
+    float:right;
+     width:70%;
+     padding:10px;
+      text-align: justify;
+      padding:5px;
+   
+}
+
+ /*marqeee chay*/
+   .bounce {
+            height: 50px;
+            overflow: hidden;
+            position: relative;
+            background: #fefefe;
+            color: red;
+            border: 1px solid #0055bd;
+        }
+        
+        .bounce p {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            line-height: 50px;
+            text-align: center;
+            -moz-transform: translateX(50%);
+            -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+            -moz-animation: bouncing-text 5s linear infinite alternate;
+            -webkit-animation: bouncing-text 5s linear infinite alternate;
+            animation: bouncing-text 10s linear infinite alternate;
+        }
+        
+        @-moz-keyframes bouncing-text {
+            0% {
+                -moz-transform: translateX(50%);
+            }
+            100% {
+                -moz-transform: translateX(-50%);
+            }
+        }
+        
+        @-webkit-keyframes bouncing-text {
+            0% {
+                -webkit-transform: translateX(50%);
+            }
+            100% {
+                -webkit-transform: translateX(-50%);
+            }
+        }
+        
+        @keyframes bouncing-text {
+            0% {
+                -moz-transform: translateX(50%);
+                -webkit-transform: translateX(50%);
+                transform: translateX(50%);
+            }
+            100% {
+                -moz-transform: translateX(-50%);
+                -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+            }
+        }
+
+

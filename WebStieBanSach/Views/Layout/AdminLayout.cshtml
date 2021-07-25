@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*Chen vao file css javascrip *@
+    <link href="~/Content/TemplateAmin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/TemplateAmin/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/TemplateAmin/css/style.css" rel="stylesheet" />
+
+    <link href="~/Content/TemplateAmin/css/style-responsive.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    @*cHEN scriptEditor*@
+    
+    <script src="https://cdn.tiny.cloud/1/ ls0jebifpxxjuxc4f9nn34m88fkpe0uq7bq51fervsczq1mb /tinymce/5/tinymce.min.js"> </script>
+    <script src="https://cdn.tiny.cloud/1/ls0jebifpxxjuxc4f9nn34m88fkpe0uq7bq51fervsczq1mb/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="~/tinymce_5.1.5/js/tinymce/jquery.tinymce.min.js"></script>
+    <script>tinymce.init({selector:'textarea'});</script>
+
+
+</head>
+
+<body>
+    <!-- start: Header -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="index.html"><span>Danh mục </span></a>
+
+            </div>
+        </div>
+        
+    </div>
+    <!-- start: Header -->
+
+    <div class="container-fluid-full">
+        <div class="row-fluid">
+        @*menu ben trai*@
+            <!-- start: Main Menu -->
+            <div id="sidebar-left" class="span2">
+                <div class="nav-collapse sidebar-nav">
+                    <ul class="nav nav-tabs nav-stacked main-menu">
+                        <li><a href="@Url.Action("Index","QuanLySanPham")" <i class="fa fa-book"></i><span class="hidden-tablet"> Quản lý sản phẩm</span></a></li>
+                        <li><a href="@Url.Action("Index","QuanLyNXB")"></i><span class="hidden-tablet"> Quản lý nhà xuất bản</span></a></li>
+                        <li><a href="@Url.Action("Index","QuanLyChuDe")"></i><span class="hidden-tablet">Quản lý chủ đề</span></a></li>
+                        <li><a href="@Url.Action("Index","QuanLyDonHang")"></i><span class="hidden-tablet">Quản lý đơn hàng</span></a></li>
+                        <li><a href="@Url.Action("NguoiDungQuanTri", "NguoiDung")"></i><span class="hidden-tablet">Quản lý người dùng</span></a></li>
+                 
+                        <li>
+                            <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Trang</span><span class="label label-important"> 3 </span></a>
+                            <ul>
+                                <li><a href="@Url.Action("Index","Home")"><i class="icon-file-alt"></i><span class="hidden-tablet"> Trang người dùng</span></a></li>
+                                <li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 2</span></a></li>
+                                <li><a class="submenu" href="submenu3.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 3</span></a></li>
+                            </ul>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+            <!-- end: Main Menu -->
+
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+            </noscript>
+
+            <!-- start: Content -->
+            <div id="content" class="span10">
+                @RenderBody()
+
+
+            </div><!--/.fluid-container-->
+            <!-- end: Content -->
+        </div><!--/#content.span10-->
+    </div><!--/fluid-row-->
+
+    <div class="modal hide fade" id="myModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h3>Settings</h3>
+        </div>
+        <div class="modal-body">
+            <p>Here settings can be configured...</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+            <a href="#" class="btn btn-primary">Save changes</a>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <footer>
+
+        <p>
+            <span style="text-align:left;float:left">&copy; 2013 <a href="@Url.Action("Indes","QuanLySanPham")" alt="Bootstrap_Metro_Dashboard">Quản lý sản phẩm</a></span>
+
+        </p>
+
+    </footer>
+
+    <!-- start: JavaScript-->
+    <script src="~/Content/TemplateAmin/js/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/TemplateAmin/js/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/TemplateAmin/js/jquery-migrate-1.0.0.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery-ui-1.10.0.custom.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.ui.touch-punch.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/modernizr.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/bootstrap.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.cookie.js"></script>
+
+    <script src='~/Content/TemplateAmin/js/fullcalendar.min.js'></script>
+
+    <script src='~/Content/TemplateAmin/js/jquery.dataTables.min.js'></script>
+
+    <script src="~/Content/TemplateAmin/js/excanvas.js"></script>
+    <script src="~/Content/TemplateAmin/js/jquery.flot.js"></script>
+    <script src="~/Content/TemplateAmin/js/jquery.flot.pie.js"></script>
+    <script src="~/Content/TemplateAmin/js/jquery.flot.stack.js"></script>
+    <script src="~/Content/TemplateAmin/js/jquery.flot.resize.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.chosen.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.uniform.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.cleditor.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.noty.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.elfinder.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.raty.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.iphone.toggle.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.uploadify-3.1.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.gritter.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.imagesloaded.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.masonry.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.knob.modified.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/jquery.sparkline.min.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/counter.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/retina.js"></script>
+
+    <script src="~/Content/TemplateAmin/js/custom.js"></script>
+    <!-- end: JavaScript-->
+
+</body>
+</html>
+
+

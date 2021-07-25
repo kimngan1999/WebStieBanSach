@@ -1,0 +1,29 @@
+﻿@using WebStieBanSach.Models;
+@model List<NhaXuatBan>
+
+<link href="~/Content/TrangChuCss.css" rel="stylesheet" />
+<h1 id="TieuDeNXB">Nhà Xuất Bản</h1>
+@foreach (var item in Model)
+{
+    <div id="itemNXB"><i class="fa fa-book"></i><a href="@Url.Action("SachTheoNXB", new { @MaNXB = item.MaNXB})">@item.TenNXB</a></div>
+}
+<div class="itemNXB"><i class="fa fa-book"></i><a href="@Url.Action("DanhMucNXB")">Nhà Xuất bản khác...</a></div>
+
+
+@*css menu nha xuat ban*@
+<style>
+    #TieuDeNXB{
+        padding: 15px 0 15px 15px;
+        color:white;
+        width:235px;
+        background-color:#de5529;
+    }
+    .itemNXB{
+        font-weight:normal;
+    }
+</style>
+
+
+@*<div><a href="#">Kim Đồng</a></div>
+<div><a href="#">Kim Đồng</a></div>
+<div><a href="#">Kim Đồng</a></div>*@

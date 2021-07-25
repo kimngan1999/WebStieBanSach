@@ -1,0 +1,42 @@
+﻿@using WebStieBanSach.Models;
+@model Sach
+
+<link href="~/Content/NguoiDungCssLayout/ChiTietSachCss.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+<style>
+    /*An div body*/
+    #divNoiDungBenPhai{
+        display:none;
+    }
+    /*AN SLIDE*/
+    #divMenuSlider{
+        display:none;
+    }
+</style>
+@section NoiDungBenPhai{
+    @*Thong tin chi tiet *@
+    @*Hinh anh *@    
+    <div id="HinhAnh">
+        <img src="@Url.Content("~/HinhAnhSP/"+Model.AnhBia)" />
+    </div>
+    @*Thong tin*@
+    <div id="ThongTin">
+        <div id="TenSach">Tên sách: @Model.TenSach</div>
+        <div id="ChuDe">Chủ đề: @ViewBag.TenChuDe</div>
+        <div id="NhaXuatBan">Nhà xuất bản: @ViewBag.NhaXuatBan</div>
+        <div id="Mota"> Nội dung tóm tắt:<br/>- @Model.MoTa<br/></div>
+        <div id="Gia"><span style="color:green; font-weight:normal;">Đơn giá: </span><br/><span id="Gia">@string.Format("{0:0,0}",@Model.GiaBan) VND</span></div>
+        <br/>
+        @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = Model.MaSach, @StrUrl = Request.Url.ToString() }))
+        {
+            <input type="submit" style="cursor:pointer" value="Mua hàng &#xf07a;" id="btnGioHang" class="btn btn-primary" />
+        }
+        
+    </div>
+    <div style="clear:both"></div>
+    }
+
+

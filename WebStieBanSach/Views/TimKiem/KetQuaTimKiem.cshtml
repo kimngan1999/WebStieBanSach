@@ -1,0 +1,67 @@
+﻿@using WebStieBanSach.Models;
+@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<Sach>
+
+<link href="~/Content/TrangChuCss.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "KetQuaTimKiem";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+<h2 style="margin-left: 2%; font-weight:normal;color:black"> Kết quả tìm kiếm</h2>
+<hr />
+<div style="margin-left20px; color:deepskyblue">@ViewBag.ThongBao</div>
+@*div body trang inder*@
+<div id="divBody" style="background:white">
+    @{ int i = 0;}
+    @foreach (var item in Model)
+    {
+        i++;
+        <div id="SanPham">
+            <a href="@Url.Action("XemChiTiet","Sach",new {@MaSach = item.MaSach })"><div id="AnhBia"><img src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="100" height="150" /> </div></a>
+            <div id="ThongTin">
+                @*neu ten sach dai hon 30 ki tu*@
+                @if (item.TenSach.Length < 35)
+                {
+                    <div id="TenSach" title="@item.TenSach">@item.TenSach</div>
+                }
+                else
+                {
+                    <div id="TenSach" title="@item.TenSach">@item.TenSach.Substring(0, 35) ...</div>
+                }
+
+                <div id="DonGia" style="color:orange"><font color="Green">Giá: </font>@string.Format("{0:0,000 VND}", @item.GiaBan)</div>
+                <div id="GioHang" style="text-align:center">
+                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = item.MaSach, @StrUrl = Request.Url.ToString() }))
+                {
+                        <input type="submit" style="cursor:pointer" value="Mua hàng &#xf07a;" id="btnGioHang" class="btn btn-primary" />
+                    }
+                </div>
+            </div>
+
+        </div>
+        if (i % 3 == 0)
+        {
+            <div style="clear:both"></div>
+        }
+    }
+</div>
+<div style="clear:both"></div>
+<div style="margin-left:20px; ">
+    @*Tao link lien ket cac trang*@
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("KetQuaTimKiem", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
+    </div>
+     
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+
+        .MenuTrang li:hover {
+            color: red;
+        }
+</style>

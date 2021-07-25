@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/NguoiDungCssLayout/StickyHeader.css" rel="stylesheet" />
+
+    @*Thiet ke nguoi dung*@
+    <link href="~/Content/NguoiDungCssLayout/NguoiDungCssLayout.css" rel="stylesheet" />
+    @*link css templete*@
+    <link href="~/Content/NguoiDungCssLayout/fonts.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCssLayout/screen.css" rel="stylesheet" />
+
+    @*chèn css front kí tự*@
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    @*css, scrip slide nivo*@
+    <link href="~/Content/TemplateAmin/css/sb-admin-2.css" rel="stylesheet" />
+    <link href="~/NivoSlider/nivo-slider.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.pack.js"></script>
+
+
+</head>
+
+<body style="background:none;">
+
+
+    <div id="Toantrang" style="background-color:#ffffff;">
+
+        <section class="blank">
+            <div class="header" id="myHeader">
+                <div class="flash">
+                    @*dien thoai*@
+                    <div class="idDienThoai">
+                        <i class="fa fa-phone-square" aria-hidden="true"></i>
+                        0886 827 279
+                    </div>
+                    @*Tạo div dang ki dang nhap*@
+                    @if ((Session["TaiKhoan"] == null) || (Session["TaiKhoan"].ToString() == ""))
+                    {
+                        <div class="DangkyDangNhap">
+                            @Html.Action("GioHangPartial", "GioHang")
+                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                            <a href="@Url.Action("DangKy","NguoiDung")">Đăng ký</a>
+                            <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            <a href="@Url.Action("DangNhap","NguoiDung")">Đăng nhập</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="DangkyDangNhap">
+                            @Html.Action("GioHangPartial", "GioHang")
+                            @Html.Action("NguoiDungPartial", "NguoiDung")
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            @*xay dung div menu*@
+            <div class="flash success" id="divDanhmuc" style="background:#0055bd;; height:30px">
+                @*hop thoai tim kiem*@
+                <div id="txtTimKiem">
+                    @using (Html.BeginForm("KetQuaTimKiem", "TimKiem", FormMethod.Post))
+                    {
+                        @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "Nhập vào từ khóa cần tìm..." })
+                        @*image button *@
+                        <div id="divHinhAnhTimKiem" style="background-color:#0055bd;">
+                            <button type="submit" style="background-color:#0055bd;"> <img src="~/fonts/HinhAnh/imgSearch.png" /></button>
+                        </div>
+                    }
+                </div>
+                @*menu ben phai*@
+                <ul class="navMenu">
+                    <li>
+
+                        <a href="@Url.Action("Index","Home")">Trang chủ</a>
+                    </li>
+                    <li>
+                        <a href="#divRight">Giới thiệu</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("LienHe","Home")">Liên hệ</a>
+                    </li>
+                    <li>
+                        <a href="#">Hướng dẫn</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Sach","Home")">Sách</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <section>
+            @*Div menu ben trai*@
+            <div id="divMenuLeft">
+                @*chen vao partial view*@
+                <div class="activity">
+                    @Html.Action("SachMoiPartial", "Sach")
+
+                </div>
+            </div>
+
+            <div id="slider" class="nivoSlider">
+
+                <img src="~/fonts/HinhAnh/Anh1.png" />
+                <img src="~/fonts/HinhAnh/Anh2.png" />
+                <img src="~/fonts/HinhAnh/Anh3.png" />
+
+            </div>
+            <div style="clear:both"> </div>
+
+        </section>
+        @* div body noi dung*@
+        <div id="NoiDung" style="background:none;">
+            @RenderBody()
+        </div>
+        <section>
+            @*Chu de*@
+            <div id="divChuDeVaNXB">
+                @Html.Action("ChuDePartial", "ChuDe")
+            </div>
+            <hr>
+
+            @*<div>
+                    <a href="#" class="button button-buy">Buy button (full width for columns)</a>
+                </div>*@
+        </section>
+        @*div Noi dung*@
+        <section class="blank items">
+            <div id="divLeft">
+                <div class="item">
+                    <div class="item-info" id="divChuDeVaNXB">
+                        @*action partial Nha xuat ban*@
+                        @Html.Action("NhaXuatBanPartial", "NhaXuatBan")
+
+                    </div>
+                  @*  <img src="http://lorempixel.com/400/300/" alt="Image">*@
+                </div>
+
+            </div>
+            <div id="divRight" style="text-align: justify; padding-right:20px;">
+                @RenderSection("NoiDungBenPhai", false)
+            </div>
+            <div style="clear:both"></div>
+            <div class="bounce">
+                <p>Cảm ơn bạn đã đến với wedsite bán sách Kim Ngân</p>
+            </div>
+            <div>
+                <a href="#" class="button button-buy"> Wesite được thiết kế bởi Kim Ngân</a>
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        window.onscroll = function () { myFunction() };
+
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+        }
+    </script>
+
+
+    @*scrip chay nivoslide*@
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                controlNav: false,
+                nextText: '',
+                prevText: ''
+
+            });
+        });
+    </script>
+</body>
+</html>

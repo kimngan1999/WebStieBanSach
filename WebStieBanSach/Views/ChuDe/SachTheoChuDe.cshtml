@@ -1,0 +1,67 @@
+﻿@using WebStieBanSach.Models
+@model List<Sach>
+<link href="~/Content/TrangChuCss.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Sách theo chủ đề";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+@*Ẩn chủ đề và div nhà xuất bản bên dưới*@
+<style>
+    #divChuDeVaNXB {
+        display: none;
+    }
+</style>
+<hr />
+<h2 style="margin-left:25%; font-weight:normal; color:black">Danh mục chủ đề</h2>
+<hr />
+<div style="clear:both"></div>
+<div id="divBody" style="width:100%">
+    <div style="float:left; width:30%">
+        @foreach (var item in (List<ChuDe>)ViewBag.lstChuDe)
+        {
+            <a id="btnChuDe" style="width:250px; font-size:11pt; color:aliceblue; background-color:#0055bd; text-decoration:none" href="@Url.Action("SachTheoChuDe", new { @MaChuDe = item.MaChuDe })" class="button button-submit">@item.TenChuDe</a>
+
+            <br />
+            <br />
+        }
+
+    </div>
+    @*Hien thi danh sach theo chu de *@
+    @{ int i = 0;
+    <div style="float:left; width:70%">
+        @foreach (var item in Model)
+        {
+            i++;
+            <div id="SanPham" style="float:left; width:23%; margin-left:3%"> 
+
+                <a href="@Url.Action("XemChiTiet", "Sach", new { @MaSach = item.MaSach })"><div id="AnhBia"><img src="@Url.Content("~/HinhAnhSP/" + item.AnhBia)" width="100" height="150" /> </div></a>
+                <div id="ThongTin">
+                    @*neu ten sach dai hon 30 ki tu*@
+                    @if (item.TenSach.Length < 35)
+                    {
+                        <div id="TenSach" title="@item.TenSach">@item.TenSach</div>
+                    }
+                    else
+                    {
+                        <div id="TenSach" title="@item.TenSach">@item.TenSach.Substring(0, 35) ...</div>
+                    }
+                    <div id="DonGia" style="color:orange"><font color="Green">Giá: </font>@string.Format("{0:0,000 VND}", @item.GiaBan)</div>
+                </div>
+
+
+            </div>
+            if (i % 3 == 0)
+            {
+                <div style="clear:both"></div>
+            }
+        }
+
+    </div>
+        }
+</div>
+
+
+<div style="clear:both"></div>
+
+

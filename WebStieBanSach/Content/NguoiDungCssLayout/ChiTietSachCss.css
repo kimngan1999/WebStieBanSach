@@ -1,0 +1,39 @@
+﻿#HinhAnh{
+    float:left;
+}
+#ThongTin{
+    float:left;
+    width:600px;
+}
+#TenSach{
+    font-weight:normal;
+    font-size:20pt;
+    height:auto;
+    word-wrap:break-word; /*Canh noi dung tu xuong dong*/
+    color:red;
+}
+#ChuDe, #NhaXuatBan{
+    font-size:15pt;
+    font-weight:normal;
+    color:black;
+    height:auto;
+}
+#Mota{
+    font-weight:normal;
+    color:black;
+    word-wrap:break-word;
+    height:auto;
+}
+#Gia, span#Gia{
+    font-weight:normal;
+    color:orange;
+    font-size:20pt;
+    height:auto;
+}
+#btnGioHang{
+    font-family:'FontAwesome','Segoe UI';
+    background-color:red;
+}
+#btnGioHang:hover{
+    background-color:aqua;
+}

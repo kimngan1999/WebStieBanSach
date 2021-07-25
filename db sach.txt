@@ -1,0 +1,43 @@
+ public Sach()
+        {
+            this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
+            this.ThamGias = new HashSet<ThamGia>();
+        }
+
+        [Required(ErrorMessage ="Vui lòng nh?p d? li?u cho tru?ng này")]
+         [Display(Name = "Mã sách")]
+        public int MaSach { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng nh?p d? li?u cho tru?ng này")]
+        [Display(Name = "Tên sách")]
+        public string TenSach { get; set; }
+        [Required(ErrorMessage = "Vui lòng nh?p d? li?u cho tru?ng này")]
+        [Display(Name = "Giá bán")]
+        public Nullable<decimal> GiaBan { get; set; }
+        [Required(ErrorMessage = "Vui lòng nh?p d? li?u cho tru?ng này")]
+        [Display(Name = "Mô t?")]
+        public string MoTa { get; set; }
+        [Required(ErrorMessage = "Vui lòng nh?p d? li?u cho tru?ng này")]
+        [Display(Name = "?nh bìa")]
+        public string AnhBia { get; set; }
+        [Required(ErrorMessage = "Vui lòng nh?p d? li?u cho tru?ng này")]
+        [Display(Name = "Ngày c?p nh?t")]
+        public Nullable<System.DateTime> NgayCapNhat { get; set; }
+        [Required(ErrorMessage = "Vui lòng nh?p d? li?u cho tru?ng này")]
+        [Display(Name = "S? lu?ng t?n")]
+        public Nullable<int> SoLuongTon { get; set; }
+        [Required(ErrorMessage = "Vui lòng nh?p d? li?u cho tru?ng này")]
+        [Display(Name = "Mã nhà xu?t b?n")]
+        public Nullable<int> MaNXB { get; set; }
+        [Required(ErrorMessage = "Vui lòng nh?p d? li?u cho tru?ng này")]
+        [Display(Name = "Mã Ch? d?")]
+        public Nullable<int> MaChuDe { get; set; }
+        [Required(ErrorMessage = "Vui lòng nh?p d? li?u cho tru?ng này")]
+        [Display(Name = "M?i")]
+        public Nullable<int> Moi { get; set; }
+
+    
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual ChuDe ChuDe { get; set; }
+        public virtual NhaXuatBan NhaXuatBan { get; set; }
+        public virtual ICollection<ThamGia> ThamGias { get; set; }
